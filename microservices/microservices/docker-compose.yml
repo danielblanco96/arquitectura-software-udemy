@@ -1,0 +1,72 @@
+version: "3"
+services:
+  eureka-server:
+    image: eureka-server
+    ports:
+      - "8761:8761"
+
+  api-gateway:
+    image: api-gateway
+    ports:
+      - "9876:9876"
+    links:
+      - eureka-server
+    depends_on:
+      - eureka-server
+
+  user-service:
+    image: user-service
+    ports:
+      - "5555:5555"
+    depends_on:
+      - eureka-server
+      - user-service-db
+
+  user-service-db:
+    image: postgres:alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ~/docker-volumes/personal/microservices/user-service:/var/lib/postgresql
+    ports:
+      - '5550:5432'
+
+  product-service:
+    image: product-service
+    ports:
+      - "6666:6666"
+    depends_on:
+      - eureka-server
+      - product-service-db
+
+  product-service-db:
+    image: postgres:alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ~/docker-volumes/personal/microservices/product-service:/var/lib/postgresql
+    ports:
+      - '6660:5432'
+
+  order-service:
+    image: order-service
+    ports:
+      - "7777:7777"
+    depends_on:
+      - eureka-server
+      - order-service-db
+
+  order-service-db:
+    image: postgres:alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ~/docker-volumes/personal/microservices/order-service:/var/lib/postgresql
+    ports:
+      - '7770:5432'

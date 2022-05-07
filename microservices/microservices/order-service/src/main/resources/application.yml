@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: order-service
+  datasource:
+    url: jdbc:postgresql://order-service-db:5432/postgres
+    username: postgres
+    password: postgres
+  flyway:
+    enabled: false
+server:
+  servlet:
+    context-path: /order-service
+  port: 7777
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+
+#Actuator
+management:
+  endpoints:
+    jmx:
+      exposure:
+        include: health,info,env,beans
+    web:
+      exposure:
+        include: health,info,env,beans
