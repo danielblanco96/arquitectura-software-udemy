@@ -1,4 +1,4 @@
-package com.danielblanco.arquitecturasmodernas.eventdrivenprogramming.config;
+package com.danielblanco.arquitecturasmodernas.eventdrivenprogramming.events.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

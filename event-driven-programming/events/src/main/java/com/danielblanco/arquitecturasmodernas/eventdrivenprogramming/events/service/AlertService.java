@@ -13,8 +13,7 @@ public class AlertService {
   private static final int ALERT_AMOUNT = 3000;
 
   @EventListener
-  public void sendAlertIfNeeded(Transfer transfer) throws InterruptedException {
-    Thread.sleep(3000);
+  public void sendAlertIfNeeded(Transfer transfer) {
     if (transfer.getAmount() > ALERT_AMOUNT) {
       logger.debug("Transfer Event received. Sending alert");
     } else {

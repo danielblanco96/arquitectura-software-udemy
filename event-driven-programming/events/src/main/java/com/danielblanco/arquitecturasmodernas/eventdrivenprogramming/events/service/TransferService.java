@@ -12,7 +12,8 @@ public class TransferService {
   Logger logger = LoggerFactory.getLogger(TransferService.class);
 
   @EventListener
-  public void executeTransfer(Transfer transfer) {
+  public void executeTransfer(Transfer transfer) throws InterruptedException {
+    Thread.sleep(5000);
     logger.debug("Transfer Event received. Sending " + transfer.getAmount() + " from " + transfer.getAccountIdFrom() + " to " + transfer.getAccountIdTo());
   }
 }
