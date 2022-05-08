@@ -6,10 +6,10 @@ import com.danielblanco.arquitecturasmodernas.hexagonal.port.in.web.WebPort;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-@Controller
+@RestController
 public class WebController implements WebPort {
 
   @Autowired

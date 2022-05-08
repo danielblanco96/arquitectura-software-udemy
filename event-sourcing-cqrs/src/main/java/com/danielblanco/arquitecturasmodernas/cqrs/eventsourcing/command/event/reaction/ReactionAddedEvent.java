@@ -7,7 +7,7 @@ public class ReactionAddedEvent extends Event {
   private String reactionId;
   private String commentId;
   private String postId;
-  private String content;
+  private String emoji;
 
   public String getReactionId() {
     return reactionId;
@@ -33,11 +33,11 @@ public class ReactionAddedEvent extends Event {
     this.postId = postId;
   }
 
-  public String getContent() {
-    return content;
+  public String getEmoji() {
+    return emoji;
   }
 
-  public void setContent(String content) {
-    this.content = content;
+  public void setEmoji(String emoji) {
+    this.emoji = emoji;
   }
 }

@@ -54,6 +54,17 @@ public class OrderService {
     return orderRepository.save(order);
   }
 
+  private Order createOrder(User user) {
+    Order order = new Order();
+    order.setAddressFirstLine(user.getAddressFirstLine());
+    order.setAddressSecondLine(user.getAddressSecondLine());
+    order.setAddressCountry(user.getAddressCountry());
+    order.setAddressPostCode(user.getAddressPostCode());
+    order.setOrderDate(new Date());
+    order.setUser(user);
+    return order;
+  }
+
   private void fillOrderLines(Order order, OrderDTO orderDto) {
     int totalPrice = 0;
     List<OrderLine> orderLines = new ArrayList<>();
@@ -67,17 +78,7 @@ public class OrderService {
     order.setOrderLines(orderLines);
   }
 
-  private Order createOrder(User user) {
-    Order order = new Order();
-    order.setAddressFirstLine(user.getAddressFirstLine());
-    order.setAddressSecondLine(user.getAddressSecondLine());
-    order.setAddressCountry(user.getAddressCountry());
-    order.setAddressPostCode(user.getAddressPostCode());
-    order.setOrderDate(new Date());
-    order.setUser(user);
-    return order;
-  }
-
+  
   private OrderLine createOrderLine(OrderLineDTO ol) {
     OrderLine orderLine = new OrderLine();
     orderLine.setProductId(ol.getProductId());

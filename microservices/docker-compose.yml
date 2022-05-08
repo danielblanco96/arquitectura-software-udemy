@@ -9,8 +9,6 @@ services:
     image: api-gateway
     ports:
       - "9876:9876"
-    links:
-      - eureka-server
     depends_on:
       - eureka-server
 
