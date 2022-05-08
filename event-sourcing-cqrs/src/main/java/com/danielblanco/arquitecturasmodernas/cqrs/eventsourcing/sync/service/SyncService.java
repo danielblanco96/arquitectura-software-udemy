@@ -39,7 +39,7 @@ public class SyncService {
 
   public void sync() {
     Date newSyncDate = new Date();
-    List<Event> events = eventStore.getEventsAfterOrderAsc(newSyncDate);
+    List<Event> events = eventStore.getEventsAfterOrderAsc(lastSyncDate);
 
     for (Event e : events) {
       if (e instanceof PostAddedEvent) {
