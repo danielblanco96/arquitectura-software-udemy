@@ -29,4 +29,8 @@ public class Player {
   public int getSetsWon() {
     return setsWon;
   }
+
+  public String getName() {
+    return name;
+  }
 }
