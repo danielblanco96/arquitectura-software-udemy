@@ -11,8 +11,8 @@ public class TennisMatch {
   private static final int MAX_WARNINGS = 3;
 
   private Map<String, Player> players;
-  String player1;
-  String player2;
+  private String player1;
+  private String player2;
   private Status status;
   private List<TennisSet> sets;
   private TennisSet currentSet;
