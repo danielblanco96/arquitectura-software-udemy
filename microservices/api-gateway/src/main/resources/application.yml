@@ -1,0 +1,38 @@
+server:
+  port: 9876
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: userService
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/***
+        - id: productService
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            - Path=/product-service/***
+        - id: orderService
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/order-service/***
+
+#Actuator
+management:
+  endpoints:
+    jmx:
+      exposure:
+        include: health,info,env,beans
+    web:
+      exposure:
+        include: health,info,env,beans
