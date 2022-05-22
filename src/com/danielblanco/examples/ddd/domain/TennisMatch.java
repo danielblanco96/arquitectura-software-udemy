@@ -31,19 +31,16 @@ public class TennisMatch {
     }
   }
 
-  private void finish(String winnerPlayer) {
+  public void finish(String winnerPlayer) {
     if(this.status == Status.IN_PROGRESS) {
       this.status = Status.FINISHED;
     }
-    
-    winner = players.get(winnerPlayer);
   }
 
   public void point(String player) {
     if(currentSet.addPoint(player)) {
       if(players.get(player).addSet() == NUMBER_OF_SETS) {
         finish(player);
-        return;
       }
 
       advanceSet();
